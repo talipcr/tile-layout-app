@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/tile-layout-front",
+  "sourceRoot": "apps/tile-layout-front/src",
+  "prefix": "tile-layout-app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tile-layout-front",
+        "index": "apps/tile-layout-front/src/index.html",
+        "main": "apps/tile-layout-front/src/main.ts",
+        "polyfills": "apps/tile-layout-front/src/polyfills.ts",
+        "tsConfig": "apps/tile-layout-front/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/tile-layout-front/src/favicon.ico",
+          "apps/tile-layout-front/src/assets"
+        ],
+        "styles": ["apps/tile-layout-front/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/tile-layout-front/src/environments/environment.ts",
+              "with": "apps/tile-layout-front/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tile-layout-front:build:production"
+        },
+        "development": {
+          "browserTarget": "tile-layout-front:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tile-layout-front:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/tile-layout-front/src/**/*.ts",
+          "apps/tile-layout-front/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tile-layout-front"],
+      "options": {
+        "jestConfig": "apps/tile-layout-front/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

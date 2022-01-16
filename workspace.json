@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "tile-layout-back": "apps/tile-layout-back",
+    "tile-layout-front": "apps/tile-layout-front",
+    "tile-layout-front-e2e": "apps/tile-layout-front-e2e"
+  }
 }

@@ -1,0 +1,28 @@
+{
+  "root": "apps/tile-layout-front-e2e",
+  "sourceRoot": "apps/tile-layout-front-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/tile-layout-front-e2e/cypress.json",
+        "devServerTarget": "tile-layout-front:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "tile-layout-front:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tile-layout-front-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["tile-layout-front"]
+}
